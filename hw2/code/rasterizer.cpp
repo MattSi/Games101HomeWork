@@ -113,7 +113,7 @@ void rst::rasterizer::draw(pos_buf_id pos_buffer, ind_buf_id ind_buffer, col_buf
 }
 
 //Screen space rasterization
-void rst::rasterizer::rasterize_triangle( Triangle& t) {
+void rst::rasterizer::rasterize_triangle(const Triangle& t) {
     auto v = t.toVector4();
     
     float minx=v[0].x(), maxx = v[0].x(), miny = v[0].y(), maxy = v[0].y();
@@ -139,7 +139,7 @@ void rst::rasterizer::rasterize_triangle( Triangle& t) {
 
                 depth_buf[idx] = z_interpolated;
                                 
-                auto clr = t.getColor2();
+                auto clr = t.color;
                 
                 float c_r = clr[0].x() * alpha + clr[1].x() * beta + clr[2].x() * gamma;
                 float c_g = clr[0].y() * alpha + clr[1].y() * beta + clr[2].y() * gamma;
