@@ -138,13 +138,13 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
                 if (z_interpolated >= depth)continue;
 
                 depth_buf[idx] = z_interpolated;
-                                
+
                 auto clr = t.color;
-                
+
                 float c_r = clr[0].x() * alpha + clr[1].x() * beta + clr[2].x() * gamma;
                 float c_g = clr[0].y() * alpha + clr[1].y() * beta + clr[2].y() * gamma;
                 float c_b = clr[0].z() * alpha + clr[1].z() * beta + clr[2].z() * gamma;
-                set_pixel(Vector3f(x, y, 1), 255*Vector3f(c_r, c_g, c_b));              
+                set_pixel(Vector3f(x, y, 1), 255 * Vector3f(c_r, c_g, c_b));
             }
         }
     }
